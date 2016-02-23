@@ -1,6 +1,6 @@
 # PostCSS Remove Nodes [![Build Status][ci-img]][ci]
 
-[PostCSS] plugin to remove rules and properties from stylesheets..
+[PostCSS] plugin to remove rules and properties from stylesheets.
 
 [PostCSS]: https://github.com/postcss/postcss
 [ci-img]:  https://travis-ci.org/esko/postcss-remove-nodes.svg
