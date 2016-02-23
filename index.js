@@ -2,6 +2,7 @@ var postcss = require('postcss');
 
 module.exports = postcss.plugin('postcss-remove-nodes', function (opts) {
     opts = opts || {};
+    var removeRules = {};
 
     return function (css, result) {
         css.walkAtRules('remove', function (atrule) {
