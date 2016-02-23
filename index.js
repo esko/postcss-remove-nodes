@@ -17,7 +17,7 @@ module.exports = postcss.plugin('postcss-remove-nodes', function (opts) {
           	atrule.remove();
         });
 
-        css.walkRules(function (rule)) {
+        css.walkRules(function (rule) {
           	var sel = removeRules[rule.selector];
               
           	if (sel === undefined) return;
