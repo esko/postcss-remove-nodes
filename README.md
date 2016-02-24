@@ -21,7 +21,7 @@
 
 .foo {
     @remove background-color;
-    color: black;    
+    background-color: black;    
 }
 ```
 
@@ -31,7 +31,7 @@
 .foo {}
 
 .foo {
-    color: black;
+    background-color: black;
 }
 ```
 
@@ -40,14 +40,19 @@ Also works inside media queries:
 ```css
 /* Input */
 
+
+.foo {
+    color: blue;
+}
+
 @media screen and (min-width: 750px) {
     .foo {
         color: black;
     }
-}
-
-.bar {
-    color: blue;
+    
+    .bar {
+        text-decoration: blink;    
+    }
 }
 
 @media screen and (min-width: 750px) {
@@ -55,20 +60,20 @@ Also works inside media queries:
         @remove color;
         color: red;
     }
-}
-olor: black;    
+    
+    @remove .bar;
 }
 ```
 
 ```css
 /* Output */
 
-@media screen and (min-width: 750px) {
-    .foo { }
+.foo {
+    color: blue;
 }
 
-.bar {
-    color: blue;
+@media screen and (min-width: 750px) {
+    .foo { }
 }
 
 @media screen and (min-width: 750px) {

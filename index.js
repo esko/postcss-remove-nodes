@@ -19,22 +19,26 @@ module.exports = postcss.plugin('postcss-remove-nodes', function (opts) {
 
             params.line = atrule.source.end.line;
             params.column = atrule.source.end.column;
-            params.context = atrule.parent.type === 'rule' ? 'root' : atrule.parent.type;
+            params.context = atrule.parent.type === 'rule' ?
+                             'root' : atrule.parent.type;
 
-            switch(atrule.parent.type) {
-                case 'root':
-                case 'atrule':
-                    params.target = 'all';
-                    params.selector = atrule.params;
-                    if (atrule.parent.name === 'media') params.mq = atrule.parent.params;
-                    break;
-                case 'rule':
-                    params.target = atrule.params;
-                    params.selector = atrule.parent.selector;
-                    if (isMq(atrule.parent.parent)) {
-                        params.mq = atrule.parent.parent.params;
-                        params.context = 'atrule';
-                    }
+            switch (atrule.parent.type) {
+            case 'root':
+            case 'atrule':
+                params.target = 'all';
+                params.selector = atrule.params;
+                if (atrule.parent.name === 'media')
+                    params.mq = atrule.parent.params;
+                break;
+            case 'rule':
+                params.target = atrule.params;
+                params.selector = atrule.parent.selector;
+                if (isMq(atrule.parent.parent)) {
+                    params.mq = atrule.parent.parent.params;
+                    params.context = 'atrule';
+                }
+                break;
+            default:
             }
 
             removeRules[params.selector] = params;
@@ -44,10 +48,10 @@ module.exports = postcss.plugin('postcss-remove-nodes', function (opts) {
 
         css.walkRules(function (rule) {
             var sel = removeRules[rule.selector];
-          
+
             if (sel === undefined || sel.context !== rule.parent.type) return;
-          	if (rule.parent.params !== sel.mq) return;
-          
+            if (rule.parent.params !== sel.mq) return;
+
             if (sel.target === 'all' && checkIsBefore(sel, rule)) {
                 rule.remove();
                 return;
@@ -60,6 +64,3 @@ module.exports = postcss.plugin('postcss-remove-nodes', function (opts) {
 
     };
 });
-
-
-
