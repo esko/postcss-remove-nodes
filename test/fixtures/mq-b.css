@@ -1,0 +1,14 @@
+@media screen and (min-width: 750px) {
+    a {
+    }
+}
+
+a {
+    color: blue;
+}
+
+@media screen and (min-width: 750px) {
+    a {
+        color: red;
+    }
+}

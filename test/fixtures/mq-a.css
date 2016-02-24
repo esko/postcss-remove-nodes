@@ -1,0 +1,16 @@
+@media screen and (min-width: 750px) {
+    a {
+        color: black;
+    }
+}
+
+a {
+    color: blue;
+}
+
+@media screen and (min-width: 750px) {
+    a {
+        @remove color;
+        color: red;
+    }
+}

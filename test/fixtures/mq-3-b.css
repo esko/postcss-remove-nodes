@@ -1,0 +1,17 @@
+@media screen and (min-width: 750px) {
+    a {
+        color: black;
+    }
+    
+    i {
+        color: blue;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    
+    i {
+        color: red;
+    }
+
+}

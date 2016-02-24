@@ -1,7 +1,7 @@
 {
   "name": "postcss-remove-nodes",
   "version": "0.0.0",
-  "description": "PostCSS plugin to remove rules and properties from stylesheets",
+  "description": "PostCSS plugin to remove rules and declarations from stylesheets",
   "keywords": [
     "postcss",
     "css",
@@ -24,10 +24,11 @@
     "ava": "^0.12.0",
     "eslint": "^2.1.0",
     "eslint-config-postcss": "^2.0.0",
-    "minimatch": "^3.0.0"
+    "minimatch": "^3.0.0",
+    "tap-prettify": "0.0.2"
   },
   "scripts": {
-    "test": "ava && eslint *.js"
+    "test": "ava --tap | tap-diff"
   },
   "eslintConfig": {
     "extends": "eslint-config-postcss/es5"
